@@ -248,7 +248,7 @@ main{
     transition: transform 0.3s ease; /* Para transiciones suaves */
 }
 
-.category-title {
+.titulo-categoria {
     font-size: 24px;
     Font-family: Copperplate, Copperplate Gothic Light, fantasy;
     font-weight: bold;

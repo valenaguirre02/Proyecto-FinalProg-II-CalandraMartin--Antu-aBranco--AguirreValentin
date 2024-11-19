@@ -13,7 +13,7 @@ def crear_app() -> Flask:
     
     db.init_app(app=app)
     
-    from src.routes import user_bp
+    from .routes import user_bp
     
     app.register_blueprint(blueprint=user_bp)
     
