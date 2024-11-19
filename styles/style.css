@@ -150,6 +150,24 @@ body {
     background-color: #00aeff;
 }
 
+.hidden {
+    visibility: hidden;
+    height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+#mensaje-sin-resultados {
+    background-color: #000;
+    border: solid #000;
+    border-radius: 5%;
+    color: rgb(247, 241, 241);
+    text-align: center;
+    align-items: center;
+}
+.hidden {
+    display: none;
+}
 
 .button{
     margin: 10px;

@@ -179,4 +179,55 @@ document.addEventListener('DOMContentLoaded', function() {
     Object.keys(categorias).forEach(categoria => {
         localStorage.setItem(`peliculas_${categoria}`, JSON.stringify(categorias[categoria]));
     });
+
+    // Buscador de películas
+    const buscador = document.getElementById('input-form');
+
+    buscador.addEventListener('input', realizarBusqueda);
+
+    function limpiarTexto(texto) {
+        return texto
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .trim();
+    }
+
+    // Función para realizar la búsqueda de películas
+    function realizarBusqueda() {
+        const textoBusqueda = limpiarTexto(buscador.value);
+        const contenedores = document.querySelectorAll('.contenedor-peliculas');
+        let resultadosEncontrados = false;
+
+        contenedores.forEach(contenedor => {
+            const peliculas = contenedor.querySelectorAll('.padre-imagen');
+            let contenedorTieneResultados = false;
+
+            peliculas.forEach(pelicula => {
+                const titulo = limpiarTexto(pelicula.querySelector('.titulo_peli').textContent);
+                if (titulo.includes(textoBusqueda)) {
+                    pelicula.classList.remove('hidden');
+                    pelicula.classList.add('resultado-encontrado'); // Agregar clase para destacar
+                    contenedorTieneResultados = true;
+                    resultadosEncontrados = true;
+                } else {
+                    pelicula.classList.add('hidden');
+                    pelicula.classList.remove('resultado-encontrado');
+                }
+            });
+
+            if (contenedorTieneResultados) {
+                contenedor.classList.remove('hidden');
+            } else {
+                contenedor.classList.add('hidden');
+            }
+        });
+
+        const mensaje = document.getElementById('mensaje-sin-resultados');
+        if (resultadosEncontrados) {
+            mensaje.classList.add('hidden');
+        } else {
+            mensaje.classList.remove('hidden');
+        }
+    }
 });
