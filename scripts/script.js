@@ -1,20 +1,15 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Desplegar el menú del botón "Categorias"
-    let botonCategorias = document.getElementById('categorias');
-    let ulEncabezado = document.querySelector('.ul-encabezado');
+    // Despliega menu del boton categorias
+    let botonCategorias = document.getElementById('categorias'); 
 
-    botonCategorias.addEventListener('click', () => {
-        ulEncabezado.classList.toggle('show');
-        botonCategorias.classList.toggle('active');
-    });
-
-    // Cerrar el menú al hacer clic fuera
-    document.addEventListener('click', (event) => {
-        if (!botonCategorias.contains(event.target) && !ulEncabezado.contains(event.target)) {
-            ulEncabezado.classList.remove('show');
-            botonCategorias.classList.remove('active');
+    botonCategorias.addEventListener('click', () => { 
+        let ulEncabezado = document.querySelector('.ul-encabezado'); 
+        if (!ulEncabezado.classList.contains('show')) { 
+            ulEncabezado.classList.add('show'); 
+        } else { 
+            ulEncabezado.classList.remove('show'); 
         }
     });
+    
 
     // Desplegar botones aside
     let tituloAsidePeli = document.getElementsByClassName('titulo-aside-peliculas')[0];
@@ -230,4 +225,4 @@ document.addEventListener('DOMContentLoaded', function() {
             mensaje.classList.remove('hidden');
         }
     }
-});
+
